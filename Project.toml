@@ -1,0 +1,7 @@
+name = "mAWS"
+uuid = "9eac4249-8a69-5a90-be31-03a81035ae8b"
+license = "MIT"
+version = "0.1.0"
+
+[compat]
+julia = "1"
