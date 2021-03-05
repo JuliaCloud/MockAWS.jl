@@ -1,4 +1,4 @@
-module mAWS
+module MockAWS
 
 using Base64
 using GitHub

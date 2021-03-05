@@ -1,10 +1,9 @@
-name = "mAWS"
-uuid = "9eac4249-8a69-5a90-be31-03a81035ae8b"
+name = "MockAWS"
+uuid = "34973bfc-0c0e-5173-a011-fa9066d4440a"
 license = "MIT"
 version = "0.1.0"
 
 [deps]
-AWS = "fbe9abb3-538b-5e4e-ba9e-bc94f4f92ebc"
 Base64 = "2a0f44e3-6c83-55bd-87e4-b1978d98bd5f"
 GitHub = "bc5e4493-9b4d-5f90-b8aa-2b2bcaad7a26"
 JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
@@ -12,7 +11,6 @@ Mocking = "78c3b35d-d492-501b-9361-3d52fe80e533"
 OrderedCollections = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
 
 [compat]
-AWS = "1"
 GitHub = "5"
 JSON = "0.18, 0.19, 0.20, 0.21"
 Mocking = "0.7"
@@ -20,6 +18,7 @@ OrderedCollections = "1"
 julia = "1"
 
 [extras]
+AWS = "fbe9abb3-538b-5e4e-ba9e-bc94f4f92ebc"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [targets]

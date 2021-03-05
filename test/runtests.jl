@@ -1,4 +1,4 @@
-using mAWS
+using MockAWS
 
 using AWS
 using GitHub

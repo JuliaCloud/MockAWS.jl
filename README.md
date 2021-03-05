@@ -1,4 +1,4 @@
-# mAWS.jl
+# MockAWS.jl
 Mocking Framework for AWS.jl
 
 ## Overview
@@ -13,7 +13,7 @@ To use this package you must first must define the high-level AWS service, then 
 
 ```julia
 using AWS
-using mAWS
+using MockAWS
 using Mocking
 
 Mocking.activate()
