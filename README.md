@@ -8,7 +8,7 @@ It is meant to provide means of testing AWS service functionality without needin
 ## Usages
 Patches are only available to [high-level](https://github.com/JuliaCloud/AWS.jl/tree/master/src/services) AWS.jl definitions, and are limited to only services which AWS themselves have defined example outputs.
 
-To use this package you must first must define the high-level AWS service, then attach the patches to the module.
+To use this package you must first define the high-level AWS service, then attach the patches to the module.
 **NOTE:** When applying patches, you must use the same name as you used when defining the AWS.jl high-level service module.
 
 ```julia
@@ -34,6 +34,14 @@ Dict{String,Any} with 8 entries:
   "VersionId"     => "null"
   "ContentType"   => "image/jpeg"
   "TagCount"      => 2
+```
+
+## Contributing
+Patches are updated manually by GitHubActions, however if you need to create them manually:
+
+```julia
+using MockAWS
+generate_patches()
 ```
 
 ## License
