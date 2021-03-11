@@ -9,7 +9,7 @@ It is meant to provide means of testing AWS service functionality without needin
 Patches are only available to [high-level](https://github.com/JuliaCloud/AWS.jl/tree/master/src/services) AWS.jl definitions, and are limited to only services which AWS themselves have defined example outputs.
 
 To use this package you must first define the high-level AWS service, then attach the patches to the module.
-**NOTE:** When applying patches, you must use the same name as you used when defining the AWS.jl high-level service module.
+**NOTE:** When applying patches, you must use the same name you used when defining the AWS.jl high-level service module.
 
 ```julia
 using AWS
