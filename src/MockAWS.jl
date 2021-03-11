@@ -11,7 +11,7 @@ export @patches, generate_patches
 """
     macro patches(service::Symbol)
 
-Attach all patches to a high-level AWS.jl service.
+Attach all patches to a high-level AWS.jl `service`.
 
 # Arguments
 - `service::Symbol`: Name of the high-level AWS.jl service module.
