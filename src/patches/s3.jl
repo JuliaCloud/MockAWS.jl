@@ -13,35 +13,35 @@ copy_object_1_patch = @patch function copy_object(a...; b...)
 end
 
 create_bucket_1_patch = @patch function create_bucket(a...; b...)
-    return Dict{String,Any}("Location" => "/examplebucket")
+    return Dict{String,Any}("Location" => "http://examplebucket.<Region>.s3.amazonaws.com/")
 end
 
 create_bucket_2_patch = @patch function create_bucket(a...; b...)
-    return Dict{String,Any}("Location" => "http://examplebucket.<Region>.s3.amazonaws.com/")
+    return Dict{String,Any}("Location" => "/examplebucket")
 end
 
 create_multipart_upload_1_patch = @patch function create_multipart_upload(a...; b...)
     return Dict{String,Any}("UploadId" => "ibZBv_75gd9r8lH_gqXatLdxMVpAlj6ZQjEs.OwyF3953YdwbcQnMA2BLGn8Lx12fQNICtMw5KyteFeHw.Sjng--","Bucket" => "examplebucket","Key" => "largeobject")
 end
 
-delete_object_1_patch = @patch function delete_object(a...; b...)
+delete_object_2_patch = @patch function delete_object(a...; b...)
     return Dict{String,Any}()
 end
 
 delete_object_tagging_1_patch = @patch function delete_object_tagging(a...; b...)
-    return Dict{String,Any}("VersionId" => "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI")
-end
-
-delete_object_tagging_2_patch = @patch function delete_object_tagging(a...; b...)
     return Dict{String,Any}("VersionId" => "null")
 end
 
+delete_object_tagging_2_patch = @patch function delete_object_tagging(a...; b...)
+    return Dict{String,Any}("VersionId" => "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI")
+end
+
 delete_objects_1_patch = @patch function delete_objects(a...; b...)
-    return Dict{String,Any}("Deleted" => Any[Dict{String,Any}("DeleteMarker" => "true","Key" => "objectkey1","DeleteMarkerVersionId" => "A._w1z6EFiCF5uhtQMDal9JDkID9tQ7F"), Dict{String,Any}("DeleteMarker" => "true","Key" => "objectkey2","DeleteMarkerVersionId" => "iOd_ORxhkKe_e8G8_oSGxt2PjsCZKlkt")])
+    return Dict{String,Any}("Deleted" => Any[Dict{String,Any}("Key" => "HappyFace.jpg","VersionId" => "yoz3HB.ZhCS_tKVEmIOr7qYyyAaZSKVd"), Dict{String,Any}("Key" => "HappyFace.jpg","VersionId" => "2LWg7lQLnY41.maGB5Z6SWW.dcq0vx7b")])
 end
 
 delete_objects_2_patch = @patch function delete_objects(a...; b...)
-    return Dict{String,Any}("Deleted" => Any[Dict{String,Any}("Key" => "HappyFace.jpg","VersionId" => "yoz3HB.ZhCS_tKVEmIOr7qYyyAaZSKVd"), Dict{String,Any}("Key" => "HappyFace.jpg","VersionId" => "2LWg7lQLnY41.maGB5Z6SWW.dcq0vx7b")])
+    return Dict{String,Any}("Deleted" => Any[Dict{String,Any}("DeleteMarker" => "true","Key" => "objectkey1","DeleteMarkerVersionId" => "A._w1z6EFiCF5uhtQMDal9JDkID9tQ7F"), Dict{String,Any}("DeleteMarker" => "true","Key" => "objectkey2","DeleteMarkerVersionId" => "iOd_ORxhkKe_e8G8_oSGxt2PjsCZKlkt")])
 end
 
 get_bucket_cors_1_patch = @patch function get_bucket_cors(a...; b...)
@@ -125,11 +125,11 @@ list_buckets_1_patch = @patch function list_buckets(a...; b...)
 end
 
 list_multipart_uploads_1_patch = @patch function list_multipart_uploads(a...; b...)
-    return Dict{String,Any}("KeyMarker" => "","Uploads" => Any[Dict{String,Any}("UploadId" => "gZ30jIqlUa.CInXklLQtSMJITdUnoZ1Y5GACB5UckOtspm5zbDMCkPF_qkfZzMiFZ6dksmcnqxJyIBvQMG9X9Q--","Initiated" => "2014-05-01T05:40:58.000Z","Owner" => Dict{String,Any}("DisplayName" => "mohanataws","ID" => "852b113e7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"Key" => "JavaFile","Initiator" => Dict{String,Any}("DisplayName" => "ownder-display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"StorageClass" => "STANDARD"), Dict{String,Any}("UploadId" => "b7tZSqIlo91lv1iwvWpvCiJWugw2xXLPAD7Z8cJyX9.WiIRgNrdG6Ldsn.9FtS63TCl1Uf5faTB.1U5Ckcbmdw--","Initiated" => "2014-05-01T05:41:27.000Z","Owner" => Dict{String,Any}("DisplayName" => "ownder-display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"Key" => "JavaFile","Initiator" => Dict{String,Any}("DisplayName" => "ownder-display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"StorageClass" => "STANDARD")],"MaxUploads" => "2","UploadIdMarker" => "","Bucket" => "acl1","NextKeyMarker" => "someobjectkey","IsTruncated" => true,"NextUploadIdMarker" => "examplelo91lv1iwvWpvCiJWugw2xXLPAD7Z8cJyX9.WiIRgNrdG6Ldsn.9FtS63TCl1Uf5faTB.1U5Ckcbmdw--")
+    return Dict{String,Any}("Uploads" => Any[Dict{String,Any}("UploadId" => "examplelUa.CInXklLQtSMJITdUnoZ1Y5GACB5UckOtspm5zbDMCkPF_qkfZzMiFZ6dksmcnqxJyIBvQMG9X9Q--","Initiated" => "2014-05-01T05:40:58.000Z","Owner" => Dict{String,Any}("DisplayName" => "display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"Key" => "JavaFile","Initiator" => Dict{String,Any}("DisplayName" => "display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"StorageClass" => "STANDARD"), Dict{String,Any}("UploadId" => "examplelo91lv1iwvWpvCiJWugw2xXLPAD7Z8cJyX9.WiIRgNrdG6Ldsn.9FtS63TCl1Uf5faTB.1U5Ckcbmdw--","Initiated" => "2014-05-01T05:41:27.000Z","Owner" => Dict{String,Any}("DisplayName" => "display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"Key" => "JavaFile","Initiator" => Dict{String,Any}("DisplayName" => "display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"StorageClass" => "STANDARD")])
 end
 
 list_multipart_uploads_2_patch = @patch function list_multipart_uploads(a...; b...)
-    return Dict{String,Any}("Uploads" => Any[Dict{String,Any}("UploadId" => "examplelUa.CInXklLQtSMJITdUnoZ1Y5GACB5UckOtspm5zbDMCkPF_qkfZzMiFZ6dksmcnqxJyIBvQMG9X9Q--","Initiated" => "2014-05-01T05:40:58.000Z","Owner" => Dict{String,Any}("DisplayName" => "display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"Key" => "JavaFile","Initiator" => Dict{String,Any}("DisplayName" => "display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"StorageClass" => "STANDARD"), Dict{String,Any}("UploadId" => "examplelo91lv1iwvWpvCiJWugw2xXLPAD7Z8cJyX9.WiIRgNrdG6Ldsn.9FtS63TCl1Uf5faTB.1U5Ckcbmdw--","Initiated" => "2014-05-01T05:41:27.000Z","Owner" => Dict{String,Any}("DisplayName" => "display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"Key" => "JavaFile","Initiator" => Dict{String,Any}("DisplayName" => "display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"StorageClass" => "STANDARD")])
+    return Dict{String,Any}("KeyMarker" => "","Uploads" => Any[Dict{String,Any}("UploadId" => "gZ30jIqlUa.CInXklLQtSMJITdUnoZ1Y5GACB5UckOtspm5zbDMCkPF_qkfZzMiFZ6dksmcnqxJyIBvQMG9X9Q--","Initiated" => "2014-05-01T05:40:58.000Z","Owner" => Dict{String,Any}("DisplayName" => "mohanataws","ID" => "852b113e7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"Key" => "JavaFile","Initiator" => Dict{String,Any}("DisplayName" => "ownder-display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"StorageClass" => "STANDARD"), Dict{String,Any}("UploadId" => "b7tZSqIlo91lv1iwvWpvCiJWugw2xXLPAD7Z8cJyX9.WiIRgNrdG6Ldsn.9FtS63TCl1Uf5faTB.1U5Ckcbmdw--","Initiated" => "2014-05-01T05:41:27.000Z","Owner" => Dict{String,Any}("DisplayName" => "ownder-display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"Key" => "JavaFile","Initiator" => Dict{String,Any}("DisplayName" => "ownder-display-name","ID" => "examplee7a2f25102679df27bb0ae12b3f85be6f290b936c4393484be31bebcc"),"StorageClass" => "STANDARD")],"MaxUploads" => "2","UploadIdMarker" => "","Bucket" => "acl1","NextKeyMarker" => "someobjectkey","IsTruncated" => true,"NextUploadIdMarker" => "examplelo91lv1iwvWpvCiJWugw2xXLPAD7Z8cJyX9.WiIRgNrdG6Ldsn.9FtS63TCl1Uf5faTB.1U5Ckcbmdw--")
 end
 
 list_object_versions_1_patch = @patch function list_object_versions(a...; b...)
@@ -149,27 +149,27 @@ list_parts_1_patch = @patch function list_parts(a...; b...)
 end
 
 put_object_1_patch = @patch function put_object(a...; b...)
-    return Dict{String,Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"","VersionId" => "pSKidl4pHBiNwukdbcPXAIs.sshFFOc0")
+    return Dict{String,Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"","VersionId" => "psM2sYY4.o1501dSx8wMvnkOzSBB.V4a")
 end
 
 put_object_2_patch = @patch function put_object(a...; b...)
-    return Dict{String,Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"","VersionId" => "Ri.vC6qVlA4dEnjgRV4ZHsHoFIjqEMNt","ServerSideEncryption" => "AES256")
-end
-
-put_object_3_patch = @patch function put_object(a...; b...)
-    return Dict{String,Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"","VersionId" => "tpf3zF08nBplQK1XLOefGskR7mGDwcDk")
-end
-
-put_object_4_patch = @patch function put_object(a...; b...)
     return Dict{String,Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"","VersionId" => "Bvq0EDKxOcXLJXNo_Lkz37eM3R4pfzyQ")
 end
 
+put_object_3_patch = @patch function put_object(a...; b...)
+    return Dict{String,Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"","VersionId" => "pSKidl4pHBiNwukdbcPXAIs.sshFFOc0")
+end
+
+put_object_4_patch = @patch function put_object(a...; b...)
+    return Dict{String,Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"","VersionId" => "tpf3zF08nBplQK1XLOefGskR7mGDwcDk")
+end
+
 put_object_5_patch = @patch function put_object(a...; b...)
-    return Dict{String,Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"","VersionId" => "Kirh.unyZwjQ69YxcQLA8z4F5j3kJJKr")
+    return Dict{String,Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"","VersionId" => "Ri.vC6qVlA4dEnjgRV4ZHsHoFIjqEMNt","ServerSideEncryption" => "AES256")
 end
 
 put_object_6_patch = @patch function put_object(a...; b...)
-    return Dict{String,Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"","VersionId" => "psM2sYY4.o1501dSx8wMvnkOzSBB.V4a")
+    return Dict{String,Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"","VersionId" => "Kirh.unyZwjQ69YxcQLA8z4F5j3kJJKr")
 end
 
 put_object_7_patch = @patch function put_object(a...; b...)
@@ -193,10 +193,10 @@ upload_part_1_patch = @patch function upload_part(a...; b...)
 end
 
 upload_part_copy_1_patch = @patch function upload_part_copy(a...; b...)
-    return Dict{String,Any}("CopyPartResult" => Dict{String,Any}("ETag" => "\"b0c6f0e7e054ab8fa2536a2677f8734d\"","LastModified" => "2016-12-29T21:24:43.000Z"))
+    return Dict{String,Any}("CopyPartResult" => Dict{String,Any}("ETag" => "\"65d16d19e65a7508a51f043180edcc36\"","LastModified" => "2016-12-29T21:44:28.000Z"))
 end
 
 upload_part_copy_2_patch = @patch function upload_part_copy(a...; b...)
-    return Dict{String,Any}("CopyPartResult" => Dict{String,Any}("ETag" => "\"65d16d19e65a7508a51f043180edcc36\"","LastModified" => "2016-12-29T21:44:28.000Z"))
+    return Dict{String,Any}("CopyPartResult" => Dict{String,Any}("ETag" => "\"b0c6f0e7e054ab8fa2536a2677f8734d\"","LastModified" => "2016-12-29T21:24:43.000Z"))
 end
 

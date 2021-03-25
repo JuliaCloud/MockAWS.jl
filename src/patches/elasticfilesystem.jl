@@ -1,7 +1,7 @@
 using Mocking
 
 create_file_system_1_patch = @patch function create_file_system(a...; b...)
-    return Dict{String,Any}("PerformanceMode" => "generalPurpose","CreationTime" => "1481841524.0","NumberOfMountTargets" => 0,"SizeInBytes" => Dict{String,Any}("Value" => 0),"LifeCycleState" => "creating","Tags" => Any[Dict{String,Any}("Value" => "MyFileSystem","Key" => "Name")],"CreationToken" => "tokenstring","FileSystemId" => "fs-01234567","OwnerId" => "012345678912")
+    return Dict{String,Any}("PerformanceMode" => "generalPurpose","CreationTime" => "1481841524.0","NumberOfMountTargets" => 0,"SizeInBytes" => Dict{String,Any}("Value" => 0),"LifeCycleState" => "creating","Tags" => Any[Dict{String,Any}("Value" => "MyFileSystem","Key" => "Name")],"CreationToken" => "tokenstring","Encrypted" => true,"FileSystemId" => "fs-01234567","OwnerId" => "012345678912")
 end
 
 create_mount_target_1_patch = @patch function create_mount_target(a...; b...)
