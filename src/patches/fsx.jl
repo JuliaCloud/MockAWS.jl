@@ -1,5 +1,9 @@
 using Mocking
 
+copy_backup_1_patch = @patch function copy_backup(a...; b...)
+    return Dict{String, Any}("Backup" => Dict{String, Any}("ResourceARN" => "arn:aws:fsx:us-east-1:012345678912:backup/backup-0a3364eded1014b28", "CreationTime" => 1.617954808068e9, "Tags" => Any[Dict{String, Any}("Value" => "MyBackup", "Key" => "Name")], "BackupId" => "backup-0a3364eded1014b28", "Type" => "USER_INITIATED", "KmsKeyId" => "arn:aws:fsx:us-east-1:012345678912:key/d1234e22-543a-12b7-a98f-e12c2b54001a", "Lifecycle" => "COPYING", "OwnerId" => "123456789012", "FileSystem" => Dict{String, Any}("StorageCapacity" => 2400, "ResourceARN" => "arn:aws:fsx:us-east-1:012345678912:file-system/fs-0f5179e395f597e66", "LustreConfiguration" => Dict{String, Any}("AutomaticBackupRetentionDays" => 0, "PerUnitStorageThroughput" => 50, "DeploymentType" => "PERSISTENT_1", "WeeklyMaintenanceStartTime" => "1:05:00"), "StorageType" => "SSD", "FileSystemId" => "fs-0498eed5fe91001ec", "FileSystemType" => "LUSTRE")))
+end
+
 create_backup_1_patch = @patch function create_backup(a...; b...)
     return Dict{String, Any}("Backup" => Dict{String, Any}("ProgressPercent" => 0, "ResourceARN" => "arn:aws:fsx:us-east-1:012345678912:backup/backup-03e3c82e0183b7b6b", "CreationTime" => "1481841524.0", "Tags" => Any[Dict{String, Any}("Value" => "MyBackup", "Key" => "Name")], "BackupId" => "backup-03e3c82e0183b7b6b", "Type" => "USER_INITIATED", "Lifecycle" => "CREATING", "FileSystem" => Dict{String, Any}("StorageCapacity" => 300, "WindowsConfiguration" => Dict{String, Any}("AutomaticBackupRetentionDays" => 30, "DailyAutomaticBackupStartTime" => "05:00", "WeeklyMaintenanceStartTime" => "1:05:00", "ActiveDirectoryId" => "d-1234abcd12"), "FileSystemId" => "fs-0498eed5fe91001ec", "OwnerId" => "012345678912")))
 end
