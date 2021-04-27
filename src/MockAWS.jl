@@ -11,12 +11,7 @@ export @patches, generate_patches
 const REPO_NAME = "aws/aws-sdk-js"
 
 """
-    macro patches(service::Symbol)
-
 Attach all patches to a high-level AWS.jl `service`.
-
-# Arguments
-- `service::Symbol`: Name of the high-level AWS.jl service module.
 """
 macro patches(service::Symbol)
     service_name = joinpath(@__DIR__, "patches", lowercase(string(service)) * ".jl")
@@ -27,7 +22,9 @@ macro patches(service::Symbol)
 end
 
 
-"""Get all aws/aws-sdk-js files"""
+"""
+Get all aws/aws-sdk-js files
+"""
 function _get_aws_sdk_js_files(auth::GitHub.OAuth2)
     master_tree = tree(REPO_NAME, "master"; auth=auth)
     apis_sha = [t for t in master_tree.tree if t["path"]=="apis"][1]["sha"]
@@ -37,7 +34,9 @@ function _get_aws_sdk_js_files(auth::GitHub.OAuth2)
 end
 
 
-"""Filter only examples.json files"""
+"""
+Filter only examples.json files
+"""
 function _get_example_files(files::Vector, auth::GitHub.OAuth2)
     example_files = filter(f -> endswith(f["path"], ".examples.json"), files)
 
@@ -45,7 +44,7 @@ function _get_example_files(files::Vector, auth::GitHub.OAuth2)
     latest_versions = OrderedDict[]
 
     for service in reverse(example_files)
-        service_name, _ = _get_service_and_version(service["path"], files, auth)
+        service_name, _ = @mock _get_service_and_version(service["path"], files, auth)
 
         if !(service_name in seen_services)
             push!(seen_services, service_name)
@@ -57,8 +56,10 @@ function _get_example_files(files::Vector, auth::GitHub.OAuth2)
 end
 
 
-"""Find the SHA hash for a give filename"""
-function _get_normal_sha(filename::String, files::Vector)
+"""
+Find the SHA hash for a give filename
+"""
+function _get_sha(filename::String, files::Vector)
     for file in files
         if file["path"] == filename
             return file["sha"]
@@ -67,11 +68,13 @@ function _get_normal_sha(filename::String, files::Vector)
 end
 
 
-"""Get service name and version from normal.json file"""
+"""
+Get service name and version from normal.json file
+"""
 function _get_service_and_version(filename::String, files::Vector, auth::GitHub.OAuth2)
     try
         filename = replace(filename, "examples"=>"normal")
-        sha = _get_normal_sha(filename, files)
+        sha = _get_sha(filename, files)
         contents = blob(REPO_NAME, sha; auth=auth)
         contents = JSON.parse(String(base64decode(contents.content)))
 
@@ -91,7 +94,9 @@ function _get_service_and_version(filename::String, files::Vector, auth::GitHub.
 end
 
 
-"""Format function names to match Julia styling"""
+"""
+Format function names to match Julia styling
+"""
 function _format_name(function_name::AbstractString)
     # Replace a string of uppercase characters with themselves prefaced by an underscore
     # [A-Z](?![A-Z]) => Match a single uppercase character that is not followed by another uppercase character
@@ -110,7 +115,9 @@ function _format_name(function_name::AbstractString)
 end
 
 
-"""Generate patches for endpoints"""
+"""
+Generate patches for endpoints
+"""
 function _generate_endpoint_patches(endpoint_name::String, endpoint_examples::Array)
     patches = String[]
 
@@ -132,7 +139,9 @@ function _generate_endpoint_patches(endpoint_name::String, endpoint_examples::Ar
 end
 
 
-"""Generate the patch file"""
+"""
+Generate the patch file
+"""
 function _create_service_patches(service_name::String, service::Dict{String, <:Any})
     filename = joinpath(@__DIR__, "patches", "$(service_name).jl")
     service_examples = service["examples"]
@@ -162,8 +171,6 @@ end
 
 
 """
-    generate_patches()
-
 Generate patches for various AWS services based off of the `aws/aws-sdk-js` repository.
 """
 function generate_patches()
