@@ -5,16 +5,17 @@ using GitHub
 using JSON
 using Base64
 using Mocking
+using OrderedCollections: OrderedDict
 using Test
 
 Mocking.activate()
 
 @testset "patch functionality" begin
-    @service S3
-    @patches S3
+    @service Secrets_Manager
+    @patches Secrets_Manager
 
-    apply(S3.get_object_1_patch) do
-        @test !isempty(@mock S3.get_object("Bucket", "Key"))
+    apply(Secrets_Manager.list_secrets_1_patch) do
+        @test !isempty(@mock Secrets_Manager.list_secrets())
     end
 end
 
