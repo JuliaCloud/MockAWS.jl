@@ -17,7 +17,7 @@ decrypt_1_patch = @patch function decrypt(a...; b...)
 end
 
 describe_key_1_patch = @patch function describe_key(a...; b...)
-    return Dict{String, Any}("KeyMetadata" => Dict{String, Any}("Arn" => "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab", "Description" => "", "KeyState" => "Enabled", "KeyUsage" => "ENCRYPT_DECRYPT", "KeyManager" => "CUSTOMER", "Origin" => "AWS_KMS", "CreationDate" => "2017-07-05T14:04:55-07:00", "KeyId" => "1234abcd-12ab-34cd-56ef-1234567890ab", "AWSAccountId" => "111122223333", "Enabled" => true))
+    return Dict{String, Any}("KeyMetadata" => Dict{String, Any}("CustomerMasterKeySpec" => "SYMMETRIC_DEFAULT", "KeyId" => "1234abcd-12ab-34cd-56ef-1234567890ab", "KeyState" => "Enabled", "Origin" => "AWS_KMS", "MultiRegion" => false, "EncryptionAlgorithms" => Any["SYMMETRIC_DEFAULT"], "CreationDate" => "2017-07-05T14:04:55-07:00", "AWSAccountId" => "111122223333", "Arn" => "arn:aws:kms:us-east-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab", "Description" => "", "KeyUsage" => "ENCRYPT_DECRYPT", "KeyManager" => "CUSTOMER", "Enabled" => true))
 end
 
 encrypt_1_patch = @patch function encrypt(a...; b...)
