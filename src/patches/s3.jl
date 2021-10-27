@@ -37,11 +37,11 @@ delete_object_tagging_2_patch = @patch function delete_object_tagging(a...; b...
 end
 
 delete_objects_1_patch = @patch function delete_objects(a...; b...)
-    return Dict{String, Any}("Deleted" => Any[Dict{String, Any}("Key" => "HappyFace.jpg", "VersionId" => "yoz3HB.ZhCS_tKVEmIOr7qYyyAaZSKVd"), Dict{String, Any}("Key" => "HappyFace.jpg", "VersionId" => "2LWg7lQLnY41.maGB5Z6SWW.dcq0vx7b")])
+    return Dict{String, Any}("Deleted" => Any[Dict{String, Any}("DeleteMarker" => "true", "Key" => "objectkey1", "DeleteMarkerVersionId" => "A._w1z6EFiCF5uhtQMDal9JDkID9tQ7F"), Dict{String, Any}("DeleteMarker" => "true", "Key" => "objectkey2", "DeleteMarkerVersionId" => "iOd_ORxhkKe_e8G8_oSGxt2PjsCZKlkt")])
 end
 
 delete_objects_2_patch = @patch function delete_objects(a...; b...)
-    return Dict{String, Any}("Deleted" => Any[Dict{String, Any}("DeleteMarker" => "true", "Key" => "objectkey1", "DeleteMarkerVersionId" => "A._w1z6EFiCF5uhtQMDal9JDkID9tQ7F"), Dict{String, Any}("DeleteMarker" => "true", "Key" => "objectkey2", "DeleteMarkerVersionId" => "iOd_ORxhkKe_e8G8_oSGxt2PjsCZKlkt")])
+    return Dict{String, Any}("Deleted" => Any[Dict{String, Any}("Key" => "HappyFace.jpg", "VersionId" => "yoz3HB.ZhCS_tKVEmIOr7qYyyAaZSKVd"), Dict{String, Any}("Key" => "HappyFace.jpg", "VersionId" => "2LWg7lQLnY41.maGB5Z6SWW.dcq0vx7b")])
 end
 
 get_bucket_cors_1_patch = @patch function get_bucket_cors(a...; b...)
@@ -93,11 +93,11 @@ get_bucket_website_1_patch = @patch function get_bucket_website(a...; b...)
 end
 
 get_object_1_patch = @patch function get_object(a...; b...)
-    return Dict{String, Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"", "LastModified" => "Thu, 15 Dec 2016 01:19:41 GMT", "ContentLength" => "3191", "Metadata" => Dict{String, Any}(), "AcceptRanges" => "bytes", "VersionId" => "null", "ContentType" => "image/jpeg", "TagCount" => 2)
+    return Dict{String, Any}("ContentRange" => "bytes 0-9/43", "ETag" => "\"0d94420ffd0bc68cd3d152506b97a9cc\"", "LastModified" => "Thu, 09 Oct 2014 22:57:28 GMT", "ContentLength" => "10", "Metadata" => Dict{String, Any}(), "AcceptRanges" => "bytes", "VersionId" => "null", "ContentType" => "text/plain")
 end
 
 get_object_2_patch = @patch function get_object(a...; b...)
-    return Dict{String, Any}("ContentRange" => "bytes 0-9/43", "ETag" => "\"0d94420ffd0bc68cd3d152506b97a9cc\"", "LastModified" => "Thu, 09 Oct 2014 22:57:28 GMT", "ContentLength" => "10", "Metadata" => Dict{String, Any}(), "AcceptRanges" => "bytes", "VersionId" => "null", "ContentType" => "text/plain")
+    return Dict{String, Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"", "LastModified" => "Thu, 15 Dec 2016 01:19:41 GMT", "ContentLength" => "3191", "Metadata" => Dict{String, Any}(), "AcceptRanges" => "bytes", "VersionId" => "null", "ContentType" => "image/jpeg", "TagCount" => 2)
 end
 
 get_object_acl_1_patch = @patch function get_object_acl(a...; b...)
@@ -149,19 +149,19 @@ list_parts_1_patch = @patch function list_parts(a...; b...)
 end
 
 put_object_1_patch = @patch function put_object(a...; b...)
-    return Dict{String, Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"", "VersionId" => "psM2sYY4.o1501dSx8wMvnkOzSBB.V4a")
+    return Dict{String, Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"", "VersionId" => "tpf3zF08nBplQK1XLOefGskR7mGDwcDk")
 end
 
 put_object_2_patch = @patch function put_object(a...; b...)
-    return Dict{String, Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"", "VersionId" => "Bvq0EDKxOcXLJXNo_Lkz37eM3R4pfzyQ")
-end
-
-put_object_3_patch = @patch function put_object(a...; b...)
     return Dict{String, Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"", "VersionId" => "pSKidl4pHBiNwukdbcPXAIs.sshFFOc0")
 end
 
+put_object_3_patch = @patch function put_object(a...; b...)
+    return Dict{String, Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"", "VersionId" => "CG612hodqujkf8FaaNfp8U..FIhLROcp", "ServerSideEncryption" => "AES256")
+end
+
 put_object_4_patch = @patch function put_object(a...; b...)
-    return Dict{String, Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"", "VersionId" => "tpf3zF08nBplQK1XLOefGskR7mGDwcDk")
+    return Dict{String, Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"", "VersionId" => "Bvq0EDKxOcXLJXNo_Lkz37eM3R4pfzyQ")
 end
 
 put_object_5_patch = @patch function put_object(a...; b...)
@@ -169,11 +169,11 @@ put_object_5_patch = @patch function put_object(a...; b...)
 end
 
 put_object_6_patch = @patch function put_object(a...; b...)
-    return Dict{String, Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"", "VersionId" => "Kirh.unyZwjQ69YxcQLA8z4F5j3kJJKr")
+    return Dict{String, Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"", "VersionId" => "psM2sYY4.o1501dSx8wMvnkOzSBB.V4a")
 end
 
 put_object_7_patch = @patch function put_object(a...; b...)
-    return Dict{String, Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"", "VersionId" => "CG612hodqujkf8FaaNfp8U..FIhLROcp", "ServerSideEncryption" => "AES256")
+    return Dict{String, Any}("ETag" => "\"6805f2cfc46c0f04559748bb039d69ae\"", "VersionId" => "Kirh.unyZwjQ69YxcQLA8z4F5j3kJJKr")
 end
 
 put_object_acl_1_patch = @patch function put_object_acl(a...; b...)
